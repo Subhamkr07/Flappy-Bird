@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Apply box-sizing for consistent layout */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     text-align: center;
@@ -10,52 +15,45 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ensure body takes full viewport height */
-    overflow: hidden; /* Prevent scrolling if content slightly overflows */
+    overflow: hidden; /* Prevent scrolling */
+    padding: 10px; /* Add some padding around the game container on small screens */
 }
 
-/* --- KEY CHANGES FOR RESPONSIVENESS START HERE --- */
 .game-container {
     position: relative;
-    width: 95%; /* Make it take up 95% of the viewport width on smaller screens */
-    max-width: 431px; /* But cap its size at 431px on larger screens (desktop size) */
+    width: 95%; /* Take up 95% of the viewport width */
+    max-width: 431px; /* But don't exceed the original intended width on larger screens */
     background-color: #fff; 
     border: 5px solid #333;
     border-radius: 10px;
     overflow: hidden; 
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    /* Ensure container scales proportionally (optional, but good practice if it also holds canvas) */
-    /* aspect-ratio: 431 / (480 + score-board-height); /* If you want to define a fixed aspect ratio for the entire container */
 }
 
 canvas {
     display: block; 
     background-color: #a0d8f0; 
-    width: 100%; /* Make canvas fill 100% of its parent's (game-container) width */
-    height: auto; /* Allow height to adjust automatically to maintain aspect ratio */
-    aspect-ratio: 431 / 480; /* Explicitly tell the browser the intended aspect ratio of the game drawing area */
+    width: 100%; /* Canvas will always fill 100% of its parent's width */
+    height: auto; /* Height will adjust automatically to maintain aspect ratio */
+    aspect-ratio: 431 / 480; /* This matches the original intended canvas dimensions */
 }
-/* --- KEY CHANGES FOR RESPONSIVENESS END HERE --- */
 
-
-/* H1 styling for the title background - adjusted slightly for better display */
 h1 {
-    /* Using the sprite sheet as background for the title area */
-    background: url("https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png") 0% 340px; 
-    background-size: cover; /* Ensure the background image covers the area */
-    background-repeat: no-repeat; /* Prevent repetition */
-    background-position: center 340px; /* Center horizontally, position 340px down vertically */
+    background: url("https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png") no-repeat center 340px; 
+    background-size: cover; 
     padding: 1.2rem 0;
     margin: 0;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    min-height: 100px; /* Give h1 a minimum height to properly display background */
-    display: flex; /* Use flexbox to center text vertically and horizontally */
+    min-height: 100px; 
+    display: flex; 
     justify-content: center;
     align-items: center;
-    text-align: center; /* Ensure text is centered within the h1 element */
+    text-align: center; 
+    font-size: 1.8em; /* Adjust font size for better fit on mobile */
+    line-height: 1.2; /* Adjust line height for multi-line text */
 }
 
-/* score-board styling */
 .score-board {
     display: flex;
     justify-content: space-around; 
@@ -66,7 +64,6 @@ h1 {
     border-bottom: 3px solid #4CAF50;
 }
 
-/* start-screen, game-over-screen, button styling */
 .start-screen, .game-over-screen {
     position: absolute;
     top: 0;
@@ -123,7 +120,6 @@ button:active {
     transform: translateY(2px);
 }
 
-/* Classes to hide screens dynamically via JavaScript */
 .start-screen.hidden,
 .game-over-screen.hidden {
     display: none;
