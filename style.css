@@ -5,36 +5,60 @@ body {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     user-select: none;
-    background-color: #70c5ce; /* Added a background color for the body */
+    background-color: #70c5ce; 
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ensure body takes full viewport height */
+    overflow: hidden; /* Prevent scrolling if content slightly overflows */
 }
 
+/* --- KEY CHANGES FOR RESPONSIVENESS START HERE --- */
 .game-container {
     position: relative;
-    width: 431px; /* Match canvas width for consistent layout */
-    background-color: #fff; /* Background for the container */
+    width: 95%; /* Make it take up 95% of the viewport width on smaller screens */
+    max-width: 431px; /* But cap its size at 431px on larger screens (desktop size) */
+    background-color: #fff; 
     border: 5px solid #333;
     border-radius: 10px;
-    overflow: hidden; /* Hide anything outside the container */
+    overflow: hidden; 
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* Ensure container scales proportionally (optional, but good practice if it also holds canvas) */
+    /* aspect-ratio: 431 / (480 + score-board-height); /* If you want to define a fixed aspect ratio for the entire container */
 }
 
-/* Removed header as it's not in HTML, adjusted h1 styling */
+canvas {
+    display: block; 
+    background-color: #a0d8f0; 
+    width: 100%; /* Make canvas fill 100% of its parent's (game-container) width */
+    height: auto; /* Allow height to adjust automatically to maintain aspect ratio */
+    aspect-ratio: 431 / 480; /* Explicitly tell the browser the intended aspect ratio of the game drawing area */
+}
+/* --- KEY CHANGES FOR RESPONSIVENESS END HERE --- */
+
+
+/* H1 styling for the title background - adjusted slightly for better display */
 h1 {
-    background: url("https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png") 0% 340px;
+    /* Using the sprite sheet as background for the title area */
+    background: url("https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png") 0% 340px; 
+    background-size: cover; /* Ensure the background image covers the area */
+    background-repeat: no-repeat; /* Prevent repetition */
+    background-position: center 340px; /* Center horizontally, position 340px down vertically */
     padding: 1.2rem 0;
     margin: 0;
-    color: #fff; /* Added color for visibility */
+    color: #fff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    min-height: 100px; /* Give h1 a minimum height to properly display background */
+    display: flex; /* Use flexbox to center text vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Ensure text is centered within the h1 element */
 }
 
-/* Changed .score-container to .score-board to match HTML */
+/* score-board styling */
 .score-board {
     display: flex;
-    justify-content: space-around; /* Changed to space-around for better spacing */
+    justify-content: space-around; 
     padding: 8px 6px;
     background: #5EE270;
     color: #fff;
@@ -42,13 +66,7 @@ h1 {
     border-bottom: 3px solid #4CAF50;
 }
 
-canvas {
-    display: block; /* Remove extra space below canvas */
-    background-color: #a0d8f0; /* Default background for canvas */
-    width: 100%; /* Make canvas responsive within its container */
-    height: 480px; /* Set a fixed height or adjust as needed */
-}
-
+/* start-screen, game-over-screen, button styling */
 .start-screen, .game-over-screen {
     position: absolute;
     top: 0;
@@ -63,7 +81,7 @@ canvas {
     align-items: center;
     font-size: 1.5em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    z-index: 10; /* Ensure it's on top */
+    z-index: 10; 
 }
 
 .game-over-screen h2 {
@@ -78,7 +96,7 @@ canvas {
 }
 
 button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -105,7 +123,7 @@ button:active {
     transform: translateY(2px);
 }
 
-/* Hide screens initially, will be controlled by JS */
+/* Classes to hide screens dynamically via JavaScript */
 .start-screen.hidden,
 .game-over-screen.hidden {
     display: none;
