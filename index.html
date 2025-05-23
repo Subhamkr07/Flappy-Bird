@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Flappy Bird by Shubham</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="score-board">
+            Best: <span id="bestScoreDisplay">0</span> | Score: <span id="currentScoreDisplay">0</span>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div id="gameOverScreen" class="game-over-screen hidden">
+            <h2>Game Over!</h2>
+            <p>Your Score: <span id="finalScore">0</span></p>
+            <button id="restartButton">Play Again</button>
+        </div>
+        <div id="startScreen" class="start-screen">
+            <h1>Shubham Present Flappy Bird</h1> 
+            <p class="attribution">by SK</p>
+            <button id="startButton">Start Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
