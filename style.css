@@ -35,7 +35,7 @@ canvas {
     background-color: #a0d8f0; 
     width: 100%; /* Canvas will always fill 100% of its parent's width */
     height: auto; /* Height will adjust automatically to maintain aspect ratio */
-    aspect-ratio: 431 / 480; /* This matches the original intended canvas dimensions */
+    aspect-ratio: 400 / 650; /* This matches the original intended canvas dimensions */
 }
 
 h1 {
