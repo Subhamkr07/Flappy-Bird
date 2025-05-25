@@ -30,6 +30,11 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
+/* Added to hide game-container initially */
+.hide-initial {
+    display: none; 
+}
+
 canvas {
     display: block; 
     background-color: #a0d8f0; 
@@ -120,7 +125,101 @@ button:active {
     transform: translateY(2px);
 }
 
-.start-screen.hidden,
-.game-over-screen.hidden {
-    display: none;
+.hidden {
+    display: none !important;
+}
+
+
+/* Splash Animation Styles */
+#logo-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  overflow: hidden;
+  transition: opacity 1s ease-out;
+}
+
+#logo-splash img {
+  max-width: 70vw;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.9), 0 0 60px rgba(255,255,255,0.5);
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#intro-text {
+  color: #fff;
+  font-size: 4.5vw;
+  text-align: center;
+  opacity: 0;
+  white-space: nowrap;
+  transform: scale(0.8);
+  text-shadow: 0 0 8px rgba(255,255,255,0.7), 0 0 15px rgba(255,255,255,0.4);
+  margin-bottom: 2vh;
+}
+
+#loading-text {
+  color: #fff;
+  font-size: 2.5vw;
+  text-align: center;
+  opacity: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+#intro-text.animate-in {
+  animation: zoomGlowGlitch 2s forwards;
+}
+
+@keyframes zoomGlowGlitch {
+  0% { opacity: 0; transform: scale(0.7); filter: blur(15px); }
+  15% { opacity: 1; transform: scale(1.1); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.intro-text-part {
+  display: inline-block;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.intro-text-part.part-left { transform-origin: right center; }
+.intro-text-part.part-right { transform-origin: left center; }
+
+#loading-text.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Modified crack-effect to align with logo */
+.crack-effect {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.08);
+  animation: crack-out 0.8s forwards;
+  z-index: 1001;
+  opacity: 0;
+  /* Ensure it's centered relative to its parent */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes crack-out {
+  0% { width: 0; height: 0; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  50% { opacity: 1; width: 70px; height: 70px; transform: translate(-50%, -50%) scale(1); }
+  100% { width: 150vw; height: 150vh; opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
 }
