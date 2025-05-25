@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('fonts/PressStart2P.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* Apply box-sizing for consistent layout */
 *, *::before, *::after {
@@ -10,58 +15,57 @@ body {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     user-select: none;
-    background-color: #70c5ce; 
+    background-color: #70c5ce;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensure body takes full viewport height */
-    overflow: hidden; /* Prevent scrolling */
-    padding: 10px; /* Add some padding around the game container on small screens */
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 10px;
 }
 
 .game-container {
     position: relative;
-    width: 95%; /* Take up 95% of the viewport width */
-    max-width: 431px; /* But don't exceed the original intended width on larger screens */
-    background-color: #fff; 
+    width: 95%;
+    max-width: 431px;
+    background-color: #fff;
     border: 5px solid #333;
     border-radius: 10px;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Added to hide game-container initially */
 .hide-initial {
-    display: none; 
+    display: none;
 }
 
 canvas {
-    display: block; 
-    background-color: #a0d8f0; 
-    width: 100%; /* Canvas will always fill 100% of its parent's width */
-    height: auto; /* Height will adjust automatically to maintain aspect ratio */
-    aspect-ratio: 400 / 650; /* This matches the original intended canvas dimensions */
+    display: block;
+    background-color: #a0d8f0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 650;
 }
 
 h1 {
-    background: url("https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png") no-repeat center 340px; 
-    background-size: cover; 
+    background: url("images/flappy-bird-set.png") no-repeat center 340px;
+    background-size: cover;
     padding: 1.2rem 0;
     margin: 0;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    min-height: 100px; 
-    display: flex; 
+    min-height: 100px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center; 
-    font-size: 1.8em; /* Adjust font size for better fit on mobile */
-    line-height: 1.2; /* Adjust line height for multi-line text */
+    text-align: center;
+    font-size: 1.8em;
+    line-height: 1.2;
 }
 
 .score-board {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     padding: 8px 6px;
     background: #5EE270;
     color: #fff;
@@ -83,7 +87,7 @@ h1 {
     align-items: center;
     font-size: 1.5em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    z-index: 10; 
+    z-index: 10;
 }
 
 .game-over-screen h2 {
@@ -128,7 +132,6 @@ button:active {
 .hidden {
     display: none !important;
 }
-
 
 /* Splash Animation Styles */
 #logo-splash {
@@ -202,7 +205,6 @@ button:active {
   transition: opacity 0.5s ease-out;
 }
 
-/* Modified crack-effect to align with logo */
 .crack-effect {
   position: absolute;
   width: 0;
@@ -212,7 +214,6 @@ button:active {
   animation: crack-out 0.8s forwards;
   z-index: 1001;
   opacity: 0;
-  /* Ensure it's centered relative to its parent */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -223,3 +224,4 @@ button:active {
   50% { opacity: 1; width: 70px; height: 70px; transform: translate(-50%, -50%) scale(1); }
   100% { width: 150vw; height: 150vh; opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
 }
+

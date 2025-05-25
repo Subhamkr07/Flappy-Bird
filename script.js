@@ -2,7 +2,7 @@
 const canvas = document.getElementById('gameCanvas'); 
 const ctx = canvas.getContext('2d');
 const img = new Image();
-img.src = "https://i.ibb.co/Q9yv5Jk/flappy-bird-set.png";
+img.src = "images/flappy-bird-set.png";
 
 // Get references to score and screen elements (IDs from updated HTML)
 const scoreDisplay = document.getElementById('currentScoreDisplay'); 
